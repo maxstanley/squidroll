@@ -10,6 +10,7 @@ impl ParseFile for AdblockPlus {
             .filter(|line| line.starts_with("||") && line.ends_with("^"))
             .map(|line| &line[2..line.len() - 1])
             .map(String::from)
+            .map(|entry| format!(".{}", entry))
             .collect()
     }
 }
